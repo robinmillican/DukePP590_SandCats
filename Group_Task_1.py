@@ -19,6 +19,8 @@ missing = ['.', 'NA', 'NULL', '','999999999','9999999']
 ## problematic df_assign = pd.read_csv(root + "SME and Residential allocations.csv",usecols = [0,5])
 df_assign = pd.read_csv(root + "SME and Residential allocations.csv",usecols = ['ID','Code','Residential - Tariff allocation','Residential - stimulus allocation','SME allocation'],na_values = missing)
 df1 = df_assign.rename(columns = {'ID':'panid'})
+df1 = df1.rename(columns = {'Residential - Tariff allocation':'res_tariff'})
+df1 = df1.rename(columns = {'Residential - stimulus allocation' :'res_stimulus'})
 df2 = pd.merge(df, df1, on = 'panid' )
 
 ## cleaning the missing/duplicates
