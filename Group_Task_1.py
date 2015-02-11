@@ -33,12 +33,11 @@ df2['hh'] = df2['date']%100
 df2 = df2[['panid','date','hh','kwh','Code','res_tariff','res_stimulus','SME allocation']]
 
 
-## prolem1: DST missing/ extra entries
-## problem2: floor size "999999999"
 
-## Potential problem in the dataset or 
-## 1. The decision of whether keeping/dropping daylight saving values need to wait until the actual analysis. 
-## 2. group 3 may need to be dropped in further analysis since they did not complete the trial
-## 3. adding dummy variables for different groups may be more convinient in next-step analysis
-## 4. If they are group 1(residential), do they  have missing data for any other answers in the survey?
+## Potential Issues to keep in mind during analysis
+## 1. The decision of whether to keep/drop daylight saving values should wait until the actual analysis. 
+## 2. Observations where Code=3 may need to be dropped in further analysis since they did not complete the trial and
+      #were dropped from other analysis 
+## 3. adding dummy variables for Residential or SME may be more convinient in next-step analysis
+## 4. Will want to check if Residential (code=1), do they  have missing data for any other answers in the survey?
 
