@@ -25,7 +25,7 @@ df2 = pd.merge(df, df1, on = 'panid' )
 
 ## cleaning the duplicates
 
-df2.duplicates(['panid','date'])
+df2.duplicated(['panid','date'])
 df2.drop_duplicates(['panid','date'])
 
 ##adding hour column
