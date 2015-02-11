@@ -26,6 +26,11 @@ df2 = pd.merge(df, df1, on = 'panid' )
 df2.duplicates(['panid','date'])
 df2.drop_duplicates(['panid','date'])
 
+##adding hour column
+df2['hh'] = df2['date']%100
+df2 = df2[['panid','date','hh','kwh','Code','Residential - Tariff allocation','Residential - stimulus allocation','SME allocation']]
+
+
 
 ## prolem1: DST missing/ extra entries
 ## problem2: floor size "999999999"
