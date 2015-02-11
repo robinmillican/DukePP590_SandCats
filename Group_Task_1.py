@@ -16,22 +16,21 @@ type(list_of_dfs[0])
 
 df = pd.concat(list_of_dfs, ignore_index = True)
 missing = ['.', 'NA', 'NULL', '','999999999','9999999']
-## problematic df_assign = pd.read_csv(root + "SME and Residential allocations.csv",usecols = [0,5])
+
+## import SME and residential allocation values and rename columns
 df_assign = pd.read_csv(root + "SME and Residential allocations.csv",usecols = ['ID','Code','Residential - Tariff allocation','Residential - stimulus allocation','SME allocation'],na_values = missing)
 df1 = df_assign.rename(columns = {'ID':'panid'})
 df1 = df1.rename(columns = {'Residential - Tariff allocation':'res_tariff'})
 df1 = df1.rename(columns = {'Residential - stimulus allocation' :'res_stimulus'})
 df2 = pd.merge(df, df1, on = 'panid' )
 
-## cleaning the duplicates
-
+## cleaning and dropping duplicates
 df2.duplicated(['panid','date'])
 df2.drop_duplicates(['panid','date'])
 
-##adding hour column
+## splitting out hour column from date
 df2['hh'] = df2['date']%100
 df2 = df2[['panid','date','hh','kwh','Code','res_tariff','res_stimulus','SME allocation']]
-
 
 
 ## prolem1: DST missing/ extra entries
