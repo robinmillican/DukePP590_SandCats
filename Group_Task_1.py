@@ -23,22 +23,22 @@ df1 = df1.rename(columns = {'Residential - Tariff allocation':'res_tariff'})
 df1 = df1.rename(columns = {'Residential - stimulus allocation' :'res_stimulus'})
 df2 = pd.merge(df, df1, on = 'panid' )
 
-## cleaning the missing/duplicates
+## cleaning the duplicates
 
 df2.duplicates(['panid','date'])
 df2.drop_duplicates(['panid','date'])
 
 ##adding hour column
 df2['hh'] = df2['date']%100
-df2 = df2[['panid','date','hh','kwh','Code','Residential - Tariff allocation','Residential - stimulus allocation','SME allocation']]
+df2 = df2[['panid','date','hh','kwh','Code','res_tariff','res_stimulus','SME allocation']]
 
 
 
 ## prolem1: DST missing/ extra entries
 ## problem2: floor size "999999999"
 
-## Potential problem in the dataset
-##1. The decision of whether keeping/dropping daylight saving values need to wait until the actual analysis. 
+## Potential problem in the dataset or 
+## 1. The decision of whether keeping/dropping daylight saving values need to wait until the actual analysis. 
 ## 2. group 3 may need to be dropped in further analysis since they did not complete the trial
 ## 3. adding dummy variables for different groups may be more convinient in next-step analysis
 ## 4. If they are group 1(residential), do they missing any other answers in the survey?
