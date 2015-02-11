@@ -37,3 +37,9 @@ df2 = df2[['panid','date','hh','kwh','Code','Residential - Tariff allocation','R
 ## prolem1: DST missing/ extra entries
 ## problem2: floor size "999999999"
 
+## Potential problem in the dataset
+##1. The decision of whether keeping/dropping daylight saving values need to wait until the actual analysis. 
+## 2. group 3 may need to be dropped in further analysis since they did not complete the trial
+## 3. adding dummy variables for different groups may be more convinient in next-step analysis
+## 4. If they are group 1(residential), do they missing any other answers in the survey?
+
